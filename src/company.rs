@@ -1,4 +1,4 @@
 struct Company {
-    name: str,
-    location: Vec<str>,
+    name: String,
+    location: Vec<String>,
 }
