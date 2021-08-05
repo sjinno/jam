@@ -1,3 +1,7 @@
+mod cli;
+
+use cli::Jam;
+
 fn main() {
-    println!("Hello, world!");
+    let args = Jam::new();
 }
