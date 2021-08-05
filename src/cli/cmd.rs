@@ -10,7 +10,7 @@ pub enum Jam {
         company: String,
         /// Company location/ Your work location. E.g. Portland Remote.
         #[structopt(short = "l", long = "location")]
-        location: Vec<String>,
+        locations: Vec<String>,
         //# Default data:
         /// If not specified, the current local date and time will be assigned.
         #[structopt(short = "d", long = "date", default_value = "")]

@@ -1,5 +1,5 @@
 struct Recruiter {
-    name: String,
-    tel: Option<Tel>,
-    email: Option<Email>,
+    name: Option<String>,
+    tel: Option<String>,
+    email: Option<String>,
 }

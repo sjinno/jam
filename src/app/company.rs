@@ -1,4 +1,5 @@
+#[derive(Default)]
 pub struct Company {
-    name: String,
-    locations: Vec<String>,
+    pub name: String,
+    pub locations: Vec<String>,
 }
