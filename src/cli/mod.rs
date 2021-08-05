@@ -1,3 +1,3 @@
-pub mod args;
+pub mod cmd;
 
-pub use args::Jam;
+pub use cmd::Jam;
