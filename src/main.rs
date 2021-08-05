@@ -7,7 +7,7 @@ use cli::Jam;
 
 fn main() {
     let args = Jam::new();
-    let app_info = AppInfoBuilder::new(args);
+    let app_info = AppInfoBuilder::new(args).build();
 
     println!("{:#?}", app_info);
 }
