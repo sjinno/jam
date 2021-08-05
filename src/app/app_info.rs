@@ -4,6 +4,7 @@ use crate::cli::Jam;
 
 use chrono::Local;
 
+#[derive(Debug)]
 pub struct AppInfo {
     company_info: Company,
     interview_info: InterviewInfo,
@@ -73,5 +74,13 @@ impl AppInfoBuilder {
             interviewer_tel,
         };
         self.interview_info = interview_info;
+    }
+
+    pub fn build(self) -> AppInfo {
+        AppInfo {
+            status: self.status,
+            company_info: self.company_info,
+            interview_info: self.interview_info,
+        }
     }
 }
