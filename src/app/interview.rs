@@ -1,4 +1,4 @@
-#[derive(Default)]
+#[derive(Default, Debug)]
 pub struct InterviewInfo {
     pub interview_date: Option<String>,
     pub interviewer: Option<String>,
