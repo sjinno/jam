@@ -1,7 +1,5 @@
 use super::{Company, InterviewInfo, Status};
-
 use crate::cli::Jam;
-
 use chrono::Local;
 
 #[derive(Debug)]
@@ -55,8 +53,8 @@ impl AppInfoBuilder {
         }
     }
 
-    fn set_company_info(&mut self, name: String, locations: Vec<String>) {
-        let company_info = Company { name, locations };
+    fn set_company_info(&mut self, company: String, locations: Vec<String>) {
+        let company_info = Company { company, locations };
         self.company_info = company_info;
     }
 
