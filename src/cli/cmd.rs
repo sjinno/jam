@@ -24,7 +24,7 @@ pub enum Jam {
         interview_date: Option<String>,
         /// Interviewer's name.
         #[structopt(short = "n", long = "interviewer-name")]
-        interviewer_name: Option<String>,
+        interviewer: Option<String>,
         /// Interviewr's email.
         #[structopt(short = "e", long = "interviewer-email")]
         interviewer_email: Option<String>,

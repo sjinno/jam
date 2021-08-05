@@ -10,7 +10,7 @@ pub struct AppInfo {
     status: Vec<Status>,
 }
 
-#[derive(Default)]
+#[derive(Default, Debug)]
 pub struct AppInfoBuilder {
     status: Vec<Status>,
     company_info: Company,
@@ -27,31 +27,51 @@ impl AppInfoBuilder {
                 locations,
                 date,
                 interview_date,
-                interviewer_name,
+                interviewer,
                 interviewer_email,
                 interviewer_tel,
             } => {
-                if date.is_empty() {
-                    app_info
-                        .status
-                        .push(Status::Applied(Local::now().to_string()));
-                }
-                let company_info = Company {
-                    name: company,
-                    locations: locations,
-                };
-                let interview_info = InterviewInfo {
-                    interview_date: interview_date,
-                    interviewer: interviewer_name,
-                    interviewer_email: interviewer_email,
-                    interviewer_tel: interviewer_tel,
-                };
-                app_info.company_info = company_info;
-                app_info.interview_info = interview_info;
+                app_info.set_status(date);
+                app_info.set_company_info(company, locations);
+                app_info.set_interview_info(
+                    interview_date,
+                    interviewer,
+                    interviewer_email,
+                    interviewer_tel,
+                );
             }
             _ => (),
         }
 
         app_info
+    }
+
+    fn set_status(&mut self, date: String) {
+        if date.is_empty() {
+            self.status.push(Status::Applied(Local::now().to_string()));
+        } else {
+            self.status.push(Status::Applied(date));
+        }
+    }
+
+    fn set_company_info(&mut self, name: String, locations: Vec<String>) {
+        let company_info = Company { name, locations };
+        self.company_info = company_info;
+    }
+
+    fn set_interview_info(
+        &mut self,
+        interview_date: Option<String>,
+        interviewer: Option<String>,
+        interviewer_email: Option<String>,
+        interviewer_tel: Option<String>,
+    ) {
+        let interview_info = InterviewInfo {
+            interview_date,
+            interviewer,
+            interviewer_email,
+            interviewer_tel,
+        };
+        self.interview_info = interview_info;
     }
 }
