@@ -34,19 +34,19 @@ pub enum Jam {
         //### Interview info ends.
         //# Optional data ends.
     },
-    Fetch {
-        #[structopt(long)]
-        dry_run: bool,
-        #[structopt(long)]
-        all: bool,
-        repository: Option<String>,
-    },
-    Commit {
-        #[structopt(short)]
-        message: Option<String>,
-        #[structopt(short)]
-        all: bool,
-    },
+    // Fetch {
+    //     #[structopt(long)]
+    //     dry_run: bool,
+    //     #[structopt(long)]
+    //     all: bool,
+    //     repository: Option<String>,
+    // },
+    // Commit {
+    //     #[structopt(short)]
+    //     message: Option<String>,
+    //     #[structopt(short)]
+    //     all: bool,
+    // },
 }
 
 impl Jam {
