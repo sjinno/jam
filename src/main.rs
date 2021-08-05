@@ -6,6 +6,7 @@ use cli::Jam;
 
 use dotenv;
 // use postgres::tls::NoTls;
+use postgres::config::Config;
 use postgres::{Client, Error, NoTls};
 
 fn main() -> Result<(), Error> {
@@ -17,7 +18,15 @@ fn main() -> Result<(), Error> {
     // println!("{:#?}", app_info);
     // println!("{:?}", dotenv::var("PG_URL").unwrap());
 
-    let mut client = Client::connect(&dotenv::var("PG_CONFIG").unwrap(), NoTls)?;
+    // let mut client = Client::connect(&dotenv::var("PG_CONFIG").unwrap(), NoTls)?;
+    let mut client = Config::new()
+        .user(&dotenv::var("PG_USER").unwrap())
+        .password(&dotenv::var("PG_PASSWD").unwrap())
+        .dbname(&dotenv::var("DB_NAME").unwrap())
+        .host(&dotenv::var("PG_HOST1").unwrap())
+        .host(&dotenv::var("PG_HOST2").unwrap())
+        .port(dotenv::var("PG_PORT").unwrap().parse::<u16>().unwrap())
+        .connect(NoTls)?;
 
     client.batch_execute(
         "
